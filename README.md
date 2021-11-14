@@ -15,41 +15,44 @@ Se fornecido o argumento da busca `name`, deverá retornar os dados que contém 
 Download: [Data JSON](db.json)
 
 Modelo:
+
 ```javascript
 [
-    {
-        "_id": "5f1b3f4b7917ef26107bd58c",
-        "index": 0,
-        "picture": "https://i.pravatar.cc/200?u=5f1b3f4b7917ef26107bd58c",
-        "age": 37,
-        "eyeColor": "brown",
-        "name": "Weber Stein",
-        "company": "VIAGRAND",
-        "email": "weber.stein@viagrand.ca",
-        "phone": "+1 (866) 533-3564",
-        "friends": [
-          {
-            "_id": "5f1d7f3e8882c9c811b111ce",
-            "index": 0,
-            "picture": "https://i.pravatar.cc/200?u=5f1d7f3e8882c9c811b111ce",
-            "age": 23,
-            "eyeColor": "green",
-            "name": "Patti Mckenzie",
-            "company": "DAISU",
-            "email": "pattimckenzie@daisu.com",
-            "phone": "+1 (960) 566-3327"
-          },
-        ],
-        "greeting": "Hello, Weber! You have 9 unread messages."
-    }
-]
+  {
+    _id: "5f1b3f4b7917ef26107bd58c",
+    index: 0,
+    picture: "https://i.pravatar.cc/200?u=5f1b3f4b7917ef26107bd58c",
+    age: 37,
+    eyeColor: "brown",
+    name: "Weber Stein",
+    company: "VIAGRAND",
+    email: "weber.stein@viagrand.ca",
+    phone: "+1 (866) 533-3564",
+    friends: [
+      {
+        _id: "5f1d7f3e8882c9c811b111ce",
+        index: 0,
+        picture: "https://i.pravatar.cc/200?u=5f1d7f3e8882c9c811b111ce",
+        age: 23,
+        eyeColor: "green",
+        name: "Patti Mckenzie",
+        company: "DAISU",
+        email: "pattimckenzie@daisu.com",
+        phone: "+1 (960) 566-3327",
+      },
+    ],
+    greeting: "Hello, Weber! You have 9 unread messages.",
+  },
+];
 ```
 
 ### Stack:
+
 - GraphQL (apollo ou relay)
 - Express
 
 ### Requisitos:
+
 - colocar um middleware no Express para log dos requests
 - no final desse `README.md` colocar uma chamada funcional para a API em `curl`.
 
@@ -62,17 +65,18 @@ Modelo:
 
 Deverá executar com `yarn start` na porta 4000
 
-
 ## Descrição do React/PWA
 
 ### Tela Inicial
+
 ![tela_incial](./docs/browser02.png)
 
 ### Tela detalhe de amigos
+
 ![tela_detalhe_amigos](./docs/browser03.png)
 
-
 ### Stack:
+
 - React
 - React Hooks
 - React Router
@@ -91,6 +95,16 @@ Deverá executar com `yarn start` na porta 4000
 
 Deverá executar com `yarn start` na porta 3000
 
-
 ### Anotações que valem menção colocar aqui:
+
+### Script curl para chamada para API:
+
+```
+curl -g \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"query":"query{list(name: \"do\") { _id name age friends { name }}}"}' \
+http://localhost:4000/graphql
+```
+
 ...

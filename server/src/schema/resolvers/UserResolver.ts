@@ -6,10 +6,6 @@ import { User } from "../../models/User";
 export class UserResolver {
   @Query(() => [User])
   async list(@Arg("name", { nullable: true }) name?: string) {
-    if (name) {
-      return UserService.find(name);
-    }
-
-    return UserService.find();
+    return UserService.find(name);
   }
 }
