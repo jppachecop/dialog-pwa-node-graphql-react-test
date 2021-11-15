@@ -10,4 +10,10 @@ export class UserService {
       ? users.filter((user) => searchRegex(name).test(user.name))
       : users;
   };
+
+  static findById = async (id: string): Promise<User | undefined> => {
+    const users = await readFile<User>("db");
+
+    return users.find((user) => user._id === id);
+  };
 }

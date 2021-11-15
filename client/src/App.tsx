@@ -4,6 +4,7 @@ import { client } from "./services/client";
 import GlobalStyle from "./styles/global";
 import { Home } from "./pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
+import { UserDetails } from "./pages/UserDetails/UserDetails";
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                 </div>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="details" element={<></>} />
+                    <Route path="profile/:id" element={<UserDetails />} />
                 </Routes>
             </ApolloProvider>
         </>

@@ -8,4 +8,9 @@ export class UserResolver {
   async list(@Arg("name", { nullable: true }) name?: string) {
     return UserService.find(name);
   }
+
+  @Query(() => User)
+  async listById(@Arg("_id") _id: string) {
+    return UserService.findById(_id);
+  }
 }
