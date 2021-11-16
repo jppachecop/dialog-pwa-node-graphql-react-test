@@ -1,4 +1,5 @@
 import React from 'react';
+import { KEYBOARD_ENTER_KEY } from '../../constants/constants';
 import { useCallOnKeyPress } from '../../hooks/useCallOnKeyPress';
 import { SearchInput } from './styles';
 
@@ -10,7 +11,7 @@ export interface SearchBarInterface {
 
 export const SearchBar = ({ onChange, onKeyUp, value }: SearchBarInterface) => {
     const handleKeyPress = useCallOnKeyPress({
-        keyCode: 13,
+        keyCode: KEYBOARD_ENTER_KEY,
         callback: onKeyUp,
     });
 

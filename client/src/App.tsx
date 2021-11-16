@@ -7,6 +7,7 @@ import { UserDetails } from './pages/UserDetails/UserDetails';
 import { GlobalContext } from './context/global';
 import { Header } from './components/Header/Header';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ROUTES } from './constants/routes';
 
 function App() {
     const client = new ApolloClient({
@@ -21,8 +22,11 @@ function App() {
                 <>
                     <Header />
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="profile/:id" element={<UserDetails />} />
+                        <Route path={ROUTES.HOME} element={<Home />} />
+                        <Route
+                            path={`${ROUTES.PROFILE}/:id`}
+                            element={<UserDetails />}
+                        />
                     </Routes>
                 </>
             </GlobalContext>

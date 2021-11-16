@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import { useQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
@@ -10,21 +10,15 @@ import { Grid } from '../../components/Grid/Grid';
 import { SearchContext } from '../../context/search/search';
 import { DEFAULT_PICTURE } from '../../constants/constants';
 import { NoResults, HomeContainer } from './styles';
+import { ROUTES } from '../../constants/routes';
 
 export const Home = () => {
-    const { searchText } = useContext(SearchContext);
+    const { debouncedSearchText } = useContext(SearchContext);
     const navigate = useNavigate();
 
-    const { loading, error, data, refetch } = useQuery(LIST_USERS, {
-        variables: { name: searchText },
+    const { loading, error, data } = useQuery(LIST_USERS, {
+        variables: { name: debouncedSearchText },
     });
-
-    useEffect(() => {
-        //  inserir debounce, fazer uma função separada com esse refecth e nela ter o debounce
-        refetch({
-            name: searchText,
-        });
-    }, [refetch, searchText]);
 
     if (loading) return <LoadingIndicator />;
     if (error)
@@ -57,7 +51,9 @@ export const Home = () => {
                                 eyeColor={eyeColor}
                                 company={company}
                                 email={email}
-                                onClick={() => navigate(`/profile/${_id}`)}
+                                onClick={() =>
+                                    navigate(`${ROUTES.PROFILE}/${_id}`)
+                                }
                             />
                         ),
                     )

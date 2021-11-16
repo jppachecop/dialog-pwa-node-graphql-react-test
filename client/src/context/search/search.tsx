@@ -1,11 +1,14 @@
-import React, { createContext, Dispatch, useState } from 'react';
+import React, { createContext, Dispatch } from 'react';
+import { useDebouncedState } from '../../hooks/useDebouncedState';
 
 interface SearchContextInterface {
+    debouncedSearchText: string;
     searchText: string;
     setSearchText: Dispatch<React.SetStateAction<string>>;
 }
 
 const DEFAULT_VALUE = {
+    debouncedSearchText: '',
     searchText: '',
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     setSearchText: () => {},
@@ -14,10 +17,13 @@ const DEFAULT_VALUE = {
 const SearchContext = createContext<SearchContextInterface>(DEFAULT_VALUE);
 
 const SearchContextProvider = ({ children }: { children: JSX.Element }) => {
-    const [searchText, setSearchText] = useState(DEFAULT_VALUE.searchText);
+    const [debouncedSearchText, searchText, setSearchText] =
+        useDebouncedState<string>(DEFAULT_VALUE.searchText, 500);
 
     return (
-        <SearchContext.Provider value={{ searchText, setSearchText }}>
+        <SearchContext.Provider
+            value={{ debouncedSearchText, searchText, setSearchText }}
+        >
             {children}
         </SearchContext.Provider>
     );
