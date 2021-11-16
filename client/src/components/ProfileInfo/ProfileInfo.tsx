@@ -18,9 +18,9 @@ export const ProfileInfo = ({
         <Container>
             <img alt={"dfsfds"} src={photo} />
             <Content>
-                <p>name: {name}</p>
-                <p>age: {age}</p>
-                <p>email: {email}</p>
+                <p>Name: {name}</p>
+                <p>Age: {age}</p>
+                <p>E-mail: {email}</p>
             </Content>
         </Container>
     );

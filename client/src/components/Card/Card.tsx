@@ -24,11 +24,11 @@ export const Card = ({
         <CardContainer onClick={onClick}>
             <img alt={name} src={photo} />
             <Content>
-                <p>name: {name}</p>
-                <p>age: {age}</p>
-                <p>eyeColor: {eyeColor}</p>
-                <p>company: {company}</p>
-                <p>email: {email}</p>
+                <p>Name: {name}</p>
+                <p>Age: {age}</p>
+                <p>Eye Color: {eyeColor}</p>
+                <p>Company: {company}</p>
+                <p>E-mail: {email}</p>
             </Content>
         </CardContainer>
     );

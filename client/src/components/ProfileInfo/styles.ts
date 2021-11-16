@@ -4,7 +4,22 @@ export const Container = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: white;
+
+    img {
+        width: 150px;
+        height: 150px;
+        margin-right: 15px;
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        img {
+            margin-right: 0px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+    }
 `;
 
 export const Content = styled.div`
@@ -13,6 +28,6 @@ export const Content = styled.div`
     align-items: flex-start;
 
     p {
-        color: black;
+        color: #a8a9ab;
     }
 `;

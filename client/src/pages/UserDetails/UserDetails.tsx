@@ -9,6 +9,7 @@ import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
 import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
 import { DEFAULT_PICTURE } from "../../constants/constants";
+import { Container, Title } from "./styles";
 
 export const UserDetails = () => {
     const { id } = useParams();
@@ -29,7 +30,7 @@ export const UserDetails = () => {
         );
 
     return (
-        <>
+        <Container>
             <ProfileInfo
                 photo={
                     data.listById?.picture
@@ -40,6 +41,7 @@ export const UserDetails = () => {
                 age={data.listById?.age}
                 email={data.listById?.email}
             />
+            <Title>Friends:</Title>
             <Grid>
                 {data.listById.friends.map(
                     ({
@@ -63,6 +65,6 @@ export const UserDetails = () => {
                     )
                 )}
             </Grid>
-        </>
+        </Container>
     );
 };
