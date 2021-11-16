@@ -9,10 +9,6 @@ export const LIST_USERS = gql`
             company
             email
             eyeColor
-            greeting
-            index
-            name
-            phone
             picture
             friends {
                 _id
@@ -21,9 +17,6 @@ export const LIST_USERS = gql`
                 company
                 email
                 eyeColor
-                index
-                name
-                phone
                 picture
             }
         }
@@ -36,13 +29,7 @@ export const LIST_USERS_BY_ID = gql`
             _id
             name
             age
-            company
             email
-            eyeColor
-            greeting
-            index
-            name
-            phone
             picture
             friends {
                 _id
@@ -51,9 +38,6 @@ export const LIST_USERS_BY_ID = gql`
                 company
                 email
                 eyeColor
-                index
-                name
-                phone
                 picture
             }
         }

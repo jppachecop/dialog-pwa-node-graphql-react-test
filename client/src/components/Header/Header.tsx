@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 import { SearchContext } from "../../context/search/search";
 import { SearchBar } from "../SearchBar/SearchBar";
 
@@ -11,17 +12,13 @@ export const Header = () => {
         setSearchText(value);
     };
 
-    const onKeyDown = () => {
+    const onKeyUp = () => {
         navigate({
-            pathname: "/",
+            pathname: ROUTES.HOME,
         });
     };
 
     return (
-        <SearchBar
-            onChange={onSearch}
-            onKeyDown={onKeyDown}
-            value={searchText}
-        />
+        <SearchBar onChange={onSearch} onKeyUp={onKeyUp} value={searchText} />
     );
 };

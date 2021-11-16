@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { promisify } from "util";
 
-export const readFile = async <T>(identifier = "db"): Promise<T[]> => {
+export const readDbFile = async <T>(identifier = "db"): Promise<T[]> => {
   try {
     const data = await promisify(fs.readFile)(
       path.resolve(__dirname, "../..", "db", `${identifier}.json`),

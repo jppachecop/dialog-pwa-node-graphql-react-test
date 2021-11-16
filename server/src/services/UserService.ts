@@ -1,19 +1,21 @@
-import { readFile } from "../utils/file";
+import { readDbFile } from "../database/readDbFile";
 import { User } from "../models/User";
 import { searchRegex } from "../utils/searchRegex";
 
 export class UserService {
   static find = async (name?: string): Promise<User[]> => {
-    const users = await readFile<User>("db");
+    const usersData = await readDbFile<User>("db");
 
     return name
-      ? users.filter((user) => searchRegex(name).test(user.name))
-      : users;
+      ? usersData.filter((user) => searchRegex(name).test(user.name))
+      : usersData;
   };
 
-  static findById = async (id: string): Promise<User | undefined> => {
-    const users = await readFile<User>("db");
+  static findById = async (id: string): Promise<User | null> => {
+    const usersData = await readDbFile<User>("db");
 
-    return users.find((user) => user._id === id);
+    const user = usersData.find((user) => user._id === id);
+
+    return user ? user : null;
   };
 }

@@ -10,26 +10,18 @@ import { Header } from "./components/Header/Header";
 
 function App() {
     return (
-        <>
-            <ApolloProvider client={client}>
-                <GlobalStyle />
-                <div>
-                    <h2>My first Apollo app 🚀</h2>
-                </div>
-                <GlobalContext>
-                    <>
-                        <Header />
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route
-                                path="profile/:id"
-                                element={<UserDetails />}
-                            />
-                        </Routes>
-                    </>
-                </GlobalContext>
-            </ApolloProvider>
-        </>
+        <ApolloProvider client={client}>
+            <GlobalStyle />
+            <GlobalContext>
+                <>
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="profile/:id" element={<UserDetails />} />
+                    </Routes>
+                </>
+            </GlobalContext>
+        </ApolloProvider>
     );
 }
 

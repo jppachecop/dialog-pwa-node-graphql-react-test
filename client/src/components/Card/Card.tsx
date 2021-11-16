@@ -1,6 +1,15 @@
 import React from "react";
-import { CardInterface } from "../../models/Card";
 import { Container, Content } from "./styles";
+
+interface CardInterface {
+    photo: string;
+    name: string;
+    company: string;
+    age: number;
+    eyeColor: string;
+    email: string;
+    onClick?: () => void;
+}
 
 export const Card = ({
     photo,
@@ -13,7 +22,7 @@ export const Card = ({
 }: CardInterface) => {
     return (
         <Container onClick={onClick}>
-            <img alt={"dfsfds"} src={photo} />
+            <img alt={name} src={photo} />
             <Content>
                 <p>name: {name}</p>
                 <p>age: {age}</p>

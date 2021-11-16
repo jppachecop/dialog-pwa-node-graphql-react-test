@@ -1,6 +1,12 @@
 import React from "react";
-import { ProfileInfoInterface } from "../../models/ProfileInfo";
 import { Container, Content } from "./styles";
+
+export interface ProfileInfoInterface {
+    photo: string;
+    name: string;
+    age: number;
+    email: string;
+}
 
 export const ProfileInfo = ({
     photo,

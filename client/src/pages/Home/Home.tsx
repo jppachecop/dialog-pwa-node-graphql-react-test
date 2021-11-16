@@ -1,18 +1,18 @@
 import React, { useContext, useEffect } from "react";
 
 import { useQuery } from "@apollo/client";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LIST_USERS } from "../../graphql/queries/user";
-import { UserInterface } from "../../models/User";
+import { UserInterface } from "../../types/User";
 import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
 import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
 import { SearchContext } from "../../context/search/search";
+import { DEFAULT_PICTURE } from "../../constants/constants";
 
 export const Home = () => {
     const { searchText } = useContext(SearchContext);
     const navigate = useNavigate();
-    // const { queryName } = useParams();
 
     const { loading, error, data, refetch } = useQuery(LIST_USERS, {
         variables: { name: searchText },
@@ -49,7 +49,7 @@ export const Home = () => {
                         }: UserInterface) => (
                             <Card
                                 key={_id}
-                                photo={picture}
+                                photo={picture ? picture : DEFAULT_PICTURE}
                                 name={name}
                                 age={age}
                                 eyeColor={eyeColor}
