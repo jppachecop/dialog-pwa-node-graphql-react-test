@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const CardContainer = styled.div`
     display: flex;
+    width: 250px;
+    height: 350px;
     flex-direction: column;
     align-items: flex-start;
     border: 1px solid black;
     padding: 25px 12px;
-    background: white;
+    background: #1c1f26;
     border-radius: 30px;
     cursor: pointer;
 
@@ -21,8 +23,10 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 15px;
 
     p {
-        color: black;
+        color: #a8a9ab;
+        word-wrap: break-word;
     }
 `;

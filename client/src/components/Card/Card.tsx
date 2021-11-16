@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Content } from "./styles";
+import { CardContainer, Content } from "./styles";
 
 interface CardInterface {
     photo: string;
@@ -21,7 +21,7 @@ export const Card = ({
     onClick,
 }: CardInterface) => {
     return (
-        <Container onClick={onClick}>
+        <CardContainer onClick={onClick}>
             <img alt={name} src={photo} />
             <Content>
                 <p>name: {name}</p>
@@ -30,6 +30,6 @@ export const Card = ({
                 <p>company: {company}</p>
                 <p>email: {email}</p>
             </Content>
-        </Container>
+        </CardContainer>
     );
 };

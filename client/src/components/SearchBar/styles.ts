@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 export const SearchInput = styled.input`
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1;
-    background-color: white;
+    background-color: #20262d;
     width: 100%;
-    border-radius: 5px;
-    color: black;
+    min-height: 35px;
+    max-width: 650px;
+    border-radius: 15px;
+    color: white;
+    margin-left: 10px;
+    padding-left: 10px;
 
     &:focus,
     &:active {
         outline: none;
-    }
-    &::placeholder {
-        color: black;
     }
 `;

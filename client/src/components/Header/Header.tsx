@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
 import { SearchContext } from "../../context/search/search";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { HeaderContainer, Text } from "./styles";
 
 export const Header = () => {
     const { searchText, setSearchText } = useContext(SearchContext);
@@ -19,6 +20,13 @@ export const Header = () => {
     };
 
     return (
-        <SearchBar onChange={onSearch} onKeyUp={onKeyUp} value={searchText} />
+        <HeaderContainer>
+            <Text>MySocial</Text>
+            <SearchBar
+                onChange={onSearch}
+                onKeyUp={onKeyUp}
+                value={searchText}
+            />
+        </HeaderContainer>
     );
 };
