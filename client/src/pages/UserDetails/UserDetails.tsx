@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { LIST_USERS_BY_ID } from "../../graphql/queries/user";
 import { UserInterface } from "../../models/User";
 import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
-import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
 import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
 
 export const UserDetails = () => {
-    const [searchName, setSearchName] = useState("");
     const { id } = useParams();
 
     const { loading, error, data } = useQuery(LIST_USERS_BY_ID, {
@@ -19,13 +17,6 @@ export const UserDetails = () => {
             _id: id,
         },
     });
-
-    // const onSearch = (value: string) => {
-    //     setSearchName(value);
-    //     refetch({
-    //         name: value,
-    //     });
-    // };
 
     if (loading) return <LoadingIndicator />;
     if (error)
@@ -38,7 +29,6 @@ export const UserDetails = () => {
 
     return (
         <>
-            {/* <SearchBar onChange={onSearch} value={searchName} /> */}
             <ProfileInfo
                 photo={data.listById?.picture}
                 name={data.listById?.name}

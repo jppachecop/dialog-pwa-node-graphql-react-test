@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { useQuery } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LIST_USERS } from "../../graphql/queries/user";
 import { UserInterface } from "../../models/User";
 import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
-import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
+import { SearchContext } from "../../context/search/search";
 
-interface Props {
-    name?: string;
-}
-
-export const Home = ({ name }: Props) => {
-    const [searchName, setSearchName] = useState("");
+export const Home = () => {
+    const { searchText } = useContext(SearchContext);
     const navigate = useNavigate();
+    // const { queryName } = useParams();
 
     const { loading, error, data, refetch } = useQuery(LIST_USERS, {
-        variables: { name },
+        variables: { name: searchText },
     });
 
-    const onSearch = (value: string) => {
-        setSearchName(value);
+    useEffect(() => {
         refetch({
-            name: value,
+            name: searchText,
         });
-    };
+    }, [refetch, searchText]);
 
     if (loading) return <LoadingIndicator />;
     if (error)
@@ -39,7 +35,6 @@ export const Home = ({ name }: Props) => {
 
     return (
         <>
-            <SearchBar onChange={onSearch} value={searchName} />
             <Grid>
                 {data.list.length > 0 ? (
                     data.list.map(
