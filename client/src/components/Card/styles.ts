@@ -17,10 +17,6 @@ export const CardContainer = styled.div`
         max-width: 150px;
         align-self: center;
     }
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `;
 
 export const Content = styled.div`
