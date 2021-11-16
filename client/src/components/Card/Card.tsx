@@ -1,5 +1,5 @@
-import React from "react";
-import { CardContainer, Content } from "./styles";
+import React from 'react';
+import { CardContainer, Content } from './styles';
 
 interface CardInterface {
     photo: string;

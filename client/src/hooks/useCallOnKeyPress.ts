@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback } from 'react';
 
 interface onKeyPressInterface {
     keyCode: number;
@@ -10,14 +10,14 @@ export const useCallOnKeyPress = ({
     callback,
 }: onKeyPressInterface) => {
     const handleKeypress = useCallback(
-        (e) => {
+        e => {
             if (e.keyCode === keyCode) {
                 if (callback) {
                     callback();
                 }
             }
         },
-        [callback, keyCode]
+        [callback, keyCode],
     );
 
     return handleKeypress;

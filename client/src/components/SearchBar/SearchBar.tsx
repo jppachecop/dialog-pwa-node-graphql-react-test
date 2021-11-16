@@ -1,6 +1,6 @@
-import React from "react";
-import { useCallOnKeyPress } from "../../hooks/useCallOnKeyPress";
-import { SearchInput } from "./styles";
+import React from 'react';
+import { useCallOnKeyPress } from '../../hooks/useCallOnKeyPress';
+import { SearchInput } from './styles';
 
 export interface SearchBarInterface {
     onChange: (value: string) => void;
@@ -16,7 +16,7 @@ export const SearchBar = ({ onChange, onKeyUp, value }: SearchBarInterface) => {
 
     return (
         <SearchInput
-            onChange={(e) => onChange(e.target.value)}
+            onChange={e => onChange(e.target.value)}
             value={value}
             placeholder="Search..."
             onKeyUp={handleKeyPress}

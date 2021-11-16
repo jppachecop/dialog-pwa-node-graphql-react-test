@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../constants/routes";
-import { SearchContext } from "../../context/search/search";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { HeaderContainer, Text } from "./styles";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
+import { SearchContext } from '../../context/search/search';
+import { SearchBar } from '../SearchBar/SearchBar';
+import { HeaderContainer, Text } from './styles';
 
 export const Header = () => {
     const { searchText, setSearchText } = useContext(SearchContext);

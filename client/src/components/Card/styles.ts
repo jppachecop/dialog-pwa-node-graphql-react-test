@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardContainer = styled.div`
     display: flex;
@@ -16,6 +16,10 @@ export const CardContainer = styled.div`
         width: 100%;
         max-width: 150px;
         align-self: center;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `;
 

@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useState } from "react";
+import React, { createContext, Dispatch, useState } from 'react';
 
 interface SearchContextInterface {
     searchText: string;
@@ -6,7 +6,7 @@ interface SearchContextInterface {
 }
 
 const DEFAULT_VALUE = {
-    searchText: "",
+    searchText: '',
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     setSearchText: () => {},
 };

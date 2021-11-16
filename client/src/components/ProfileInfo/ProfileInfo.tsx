@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Content } from "./styles";
+import React from 'react';
+import { Container, Content } from './styles';
 
 export interface ProfileInfoInterface {
     photo: string;
@@ -16,7 +16,7 @@ export const ProfileInfo = ({
 }: ProfileInfoInterface) => {
     return (
         <Container>
-            <img alt={"dfsfds"} src={photo} />
+            <img alt={'dfsfds'} src={photo} />
             <Content>
                 <p>Name: {name}</p>
                 <p>Age: {age}</p>

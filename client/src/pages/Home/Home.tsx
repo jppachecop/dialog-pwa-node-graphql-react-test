@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from 'react';
 
-import { useQuery } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
-import { LIST_USERS } from "../../graphql/queries/user";
-import { UserInterface } from "../../types/User";
-import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
-import { Card } from "../../components/Card/Card";
-import { Grid } from "../../components/Grid/Grid";
-import { SearchContext } from "../../context/search/search";
-import { DEFAULT_PICTURE } from "../../constants/constants";
+import { useQuery } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import { LIST_USERS } from '../../graphql/queries/user';
+import { UserInterface } from '../../types/User';
+import { LoadingIndicator } from '../../components/LoadingIndicator/LoadingIndicator';
+import { Card } from '../../components/Card/Card';
+import { Grid } from '../../components/Grid/Grid';
+import { SearchContext } from '../../context/search/search';
+import { DEFAULT_PICTURE } from '../../constants/constants';
+import { NoResults, HomeContainer } from './styles';
 
 export const Home = () => {
     const { searchText } = useContext(SearchContext);
@@ -19,6 +20,7 @@ export const Home = () => {
     });
 
     useEffect(() => {
+        //  inserir debounce, fazer uma função separada com esse refecth e nela ter o debounce
         refetch({
             name: searchText,
         });
@@ -34,7 +36,7 @@ export const Home = () => {
         );
 
     return (
-        <>
+        <HomeContainer>
             <Grid>
                 {data.list.length > 0 ? (
                     data.list.map(
@@ -49,7 +51,7 @@ export const Home = () => {
                         }: UserInterface) => (
                             <Card
                                 key={_id}
-                                photo={picture ? picture : DEFAULT_PICTURE}
+                                photo={picture ?? DEFAULT_PICTURE}
                                 name={name}
                                 age={age}
                                 eyeColor={eyeColor}
@@ -57,12 +59,14 @@ export const Home = () => {
                                 email={email}
                                 onClick={() => navigate(`/profile/${_id}`)}
                             />
-                        )
+                        ),
                     )
                 ) : (
-                    <p>Sem resultados :/</p>
+                    <NoResults>
+                        There aren&apos;t users with this name :/
+                    </NoResults>
                 )}
             </Grid>
-        </>
+        </HomeContainer>
     );
 };

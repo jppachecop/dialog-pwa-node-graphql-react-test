@@ -16,6 +16,6 @@ export class UserService {
 
     const user = usersData.find((user) => user._id === id);
 
-    return user ? user : null;
+    return user ?? null;
   };
 }
