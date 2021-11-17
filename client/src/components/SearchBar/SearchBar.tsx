@@ -1,7 +1,7 @@
-import React from 'react';
-import { KEYBOARD_ENTER_KEY } from '../../constants/constants';
-import { useCallOnKeyPress } from '../../hooks/useCallOnKeyPress';
-import { SearchInput } from './styles';
+import React from "react";
+import { KEYBOARD_ENTER_KEY } from "../../constants/constants";
+import { useCallOnKeyPress } from "../../hooks/useCallOnKeyPress";
+import { SearchInput } from "./styles";
 
 export interface SearchBarInterface {
     onChange: (value: string) => void;

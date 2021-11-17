@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { useQuery } from '@apollo/client';
-import { useParams } from 'react-router-dom';
-import { LIST_USERS_BY_ID } from '../../graphql/queries/user';
-import { UserInterface } from '../../types/User';
-import { LoadingIndicator } from '../../components/LoadingIndicator/LoadingIndicator';
-import { Card } from '../../components/Card/Card';
-import { Grid } from '../../components/Grid/Grid';
-import { ProfileInfo } from '../../components/ProfileInfo/ProfileInfo';
-import { DEFAULT_PICTURE } from '../../constants/constants';
-import { Container, NoResults, Title } from './styles';
-import { BsWifiOff, BsXCircle, BsEmojiFrown } from 'react-icons/bs';
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
+import { LIST_USERS_BY_ID } from "../../graphql/queries/user";
+import { UserInterface } from "../../types/User";
+import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
+import { Card } from "../../components/Card/Card";
+import { Grid } from "../../components/Grid/Grid";
+import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
+import { DEFAULT_PICTURE } from "../../constants/constants";
+import { Container, NoResults, Title } from "./styles";
+import { BsWifiOff, BsXCircle, BsEmojiFrown } from "react-icons/bs";
 
 export const UserDetails = () => {
     const { id } = useParams();

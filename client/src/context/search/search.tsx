@@ -1,5 +1,5 @@
-import React, { createContext, Dispatch } from 'react';
-import { useDebouncedState } from '../../hooks/useDebouncedState';
+import React, { createContext, Dispatch } from "react";
+import { useDebouncedState } from "../../hooks/useDebouncedState";
 
 interface SearchContextInterface {
     debouncedSearchText: string;
@@ -8,8 +8,8 @@ interface SearchContextInterface {
 }
 
 const DEFAULT_VALUE = {
-    debouncedSearchText: '',
-    searchText: '',
+    debouncedSearchText: "",
+    searchText: "",
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     setSearchText: () => {},
 };

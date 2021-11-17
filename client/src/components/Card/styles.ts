@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CardContainer = styled.div`
     display: flex;
@@ -11,11 +11,15 @@ export const CardContainer = styled.div`
     background: #1c1f26;
     border-radius: 30px;
     cursor: pointer;
+`;
+
+export const ImageContainer = styled.div`
+    width: 100%;
+    max-width: 150px;
+    align-self: center;
 
     img {
         width: 100%;
-        max-width: 150px;
-        align-self: center;
     }
 `;
 

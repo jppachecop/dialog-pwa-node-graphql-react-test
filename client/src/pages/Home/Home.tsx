@@ -1,17 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import { useQuery } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
-import { LIST_USERS } from '../../graphql/queries/user';
-import { UserInterface } from '../../types/User';
-import { LoadingIndicator } from '../../components/LoadingIndicator/LoadingIndicator';
-import { Card } from '../../components/Card/Card';
-import { Grid } from '../../components/Grid/Grid';
-import { SearchContext } from '../../context/search/search';
-import { DEFAULT_PICTURE } from '../../constants/constants';
-import { NoResults, HomeContainer } from './styles';
-import { ROUTES } from '../../constants/routes';
-import { BsWifiOff, BsXCircle } from 'react-icons/bs';
+import { useQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+import { LIST_USERS } from "../../graphql/queries/user";
+import { UserInterface } from "../../types/User";
+import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
+import { Card } from "../../components/Card/Card";
+import { Grid } from "../../components/Grid/Grid";
+import { SearchContext } from "../../context/search/search";
+import { DEFAULT_PICTURE } from "../../constants/constants";
+import { NoResults, HomeContainer } from "./styles";
+import { ROUTES } from "../../constants/routes";
+import { BsWifiOff, BsXCircle } from "react-icons/bs";
 
 export const Home = () => {
     const { debouncedSearchText } = useContext(SearchContext);

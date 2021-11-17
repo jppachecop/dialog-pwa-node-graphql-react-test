@@ -1,5 +1,5 @@
-import React from 'react';
-import { CardContainer, Content } from './styles';
+import React from "react";
+import { CardContainer, Content, ImageContainer } from "./styles";
 
 interface CardInterface {
     photo: string;
@@ -22,7 +22,9 @@ export const Card = ({
 }: CardInterface) => {
     return (
         <CardContainer onClick={onClick}>
-            <img alt={name} src={photo} />
+            <ImageContainer>
+                <img alt={name} src={photo} />
+            </ImageContainer>
             <Content>
                 <p>Name: {name}</p>
                 <p>Age: {age}</p>
