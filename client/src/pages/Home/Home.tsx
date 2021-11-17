@@ -11,6 +11,7 @@ import { SearchContext } from '../../context/search/search';
 import { DEFAULT_PICTURE } from '../../constants/constants';
 import { NoResults, HomeContainer } from './styles';
 import { ROUTES } from '../../constants/routes';
+import { BsWifiOff, BsXCircle } from 'react-icons/bs';
 
 export const Home = () => {
     const { debouncedSearchText } = useContext(SearchContext);
@@ -21,19 +22,30 @@ export const Home = () => {
     });
 
     if (loading) return <LoadingIndicator />;
-    if (error)
-        return (
-            <p>
-                Houve um erro na sua busca, tente novamente. Caso o erro
-                persista, contacte nosso suporte.
-            </p>
-        );
+
+    if (error) {
+        if (error.networkError) {
+            return (
+                <NoResults>
+                    <BsWifiOff />
+                    <p>Check your internet connection and try again.</p>
+                </NoResults>
+            );
+        } else {
+            return (
+                <NoResults>
+                    <BsXCircle />
+                    <p>Your search could not be completed, try again.</p>
+                </NoResults>
+            );
+        }
+    }
 
     return (
         <HomeContainer>
-            <Grid>
-                {data.list.length > 0 ? (
-                    data.list.map(
+            {data.list.length > 0 ? (
+                <Grid>
+                    {data.list.map(
                         ({
                             _id,
                             picture,
@@ -56,13 +68,14 @@ export const Home = () => {
                                 }
                             />
                         ),
-                    )
-                ) : (
-                    <NoResults>
-                        There aren&apos;t users with this name :/
-                    </NoResults>
-                )}
-            </Grid>
+                    )}
+                </Grid>
+            ) : (
+                <NoResults>
+                    <BsXCircle />
+                    <p>No users found </p>
+                </NoResults>
+            )}
         </HomeContainer>
     );
 };

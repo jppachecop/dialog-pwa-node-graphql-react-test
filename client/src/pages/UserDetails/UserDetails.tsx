@@ -9,7 +9,8 @@ import { Card } from '../../components/Card/Card';
 import { Grid } from '../../components/Grid/Grid';
 import { ProfileInfo } from '../../components/ProfileInfo/ProfileInfo';
 import { DEFAULT_PICTURE } from '../../constants/constants';
-import { Container, Title } from './styles';
+import { Container, NoResults, Title } from './styles';
+import { BsWifiOff, BsXCircle, BsEmojiFrown } from 'react-icons/bs';
 
 export const UserDetails = () => {
     const { id } = useParams();
@@ -21,13 +22,27 @@ export const UserDetails = () => {
     });
 
     if (loading) return <LoadingIndicator />;
-    if (error)
-        return (
-            <p>
-                Houve um erro na sua busca, tente novamente. Caso o erro
-                persista, contacte nosso suporte.
-            </p>
-        );
+
+    if (error) {
+        if (error.networkError) {
+            return (
+                <NoResults>
+                    <BsWifiOff />
+                    <p>Check your internet connection and try again.</p>
+                </NoResults>
+            );
+        } else {
+            return (
+                <NoResults>
+                    <BsXCircle />
+                    <p>
+                        We could not get the user&apos;s informations, try
+                        again.
+                    </p>
+                </NoResults>
+            );
+        }
+    }
 
     return (
         <Container>
@@ -38,29 +53,36 @@ export const UserDetails = () => {
                 email={data.listById?.email}
             />
             <Title>Friends:</Title>
-            <Grid>
-                {data.listById.friends.map(
-                    ({
-                        _id,
-                        picture,
-                        name,
-                        age,
-                        eyeColor,
-                        company,
-                        email,
-                    }: UserInterface) => (
-                        <Card
-                            key={_id}
-                            photo={picture ?? DEFAULT_PICTURE}
-                            name={name}
-                            age={age}
-                            eyeColor={eyeColor}
-                            company={company}
-                            email={email}
-                        />
-                    ),
-                )}
-            </Grid>
+            {data.listById?.friends.length > 0 ? (
+                <Grid>
+                    {data.listById.friends.map(
+                        ({
+                            _id,
+                            picture,
+                            name,
+                            age,
+                            eyeColor,
+                            company,
+                            email,
+                        }: UserInterface) => (
+                            <Card
+                                key={_id}
+                                photo={picture ?? DEFAULT_PICTURE}
+                                name={name}
+                                age={age}
+                                eyeColor={eyeColor}
+                                company={company}
+                                email={email}
+                            />
+                        ),
+                    )}
+                </Grid>
+            ) : (
+                <NoResults>
+                    <BsEmojiFrown />
+                    <p>This user does not have friends.</p>
+                </NoResults>
+            )}
         </Container>
     );
 };

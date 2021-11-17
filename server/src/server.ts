@@ -21,11 +21,7 @@ const main = async () => {
 
   apolloServer.applyMiddleware({ app });
 
-  app.listen(4000, () =>
-    console.log(
-      `Server started on http://localhost:4000${apolloServer.graphqlPath}`
-    )
-  );
+  app.listen(4000, () => console.log("Server started!"));
 };
 
 main();
