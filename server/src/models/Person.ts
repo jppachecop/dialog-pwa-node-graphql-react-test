@@ -8,8 +8,8 @@ export class Person {
   @Field(() => Int)
   index!: number;
 
-  @Field()
-  picture: string = "";
+  @Field({ nullable: true })
+  picture?: string;
 
   @Field(() => Int)
   age!: number;

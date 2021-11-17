@@ -8,8 +8,9 @@ import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndic
 import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
 import { ProfileInfo } from "../../components/ProfileInfo/ProfileInfo";
+import { ErrorText } from "../../components/ErrorText/ErrorText";
 import { DEFAULT_PICTURE } from "../../constants/constants";
-import { Container, NoResults, Title } from "./styles";
+import { Container, Title } from "./styles";
 import { BsWifiOff, BsXCircle, BsEmojiFrown } from "react-icons/bs";
 
 export const UserDetails = () => {
@@ -26,20 +27,19 @@ export const UserDetails = () => {
     if (error) {
         if (error.networkError) {
             return (
-                <NoResults>
-                    <BsWifiOff />
-                    <p>Check your internet connection and try again.</p>
-                </NoResults>
+                <ErrorText
+                    Icon={<BsWifiOff />}
+                    message={"Check your internet connection and try again."}
+                />
             );
         } else {
             return (
-                <NoResults>
-                    <BsXCircle />
-                    <p>
-                        We could not get the user&apos;s informations, try
-                        again.
-                    </p>
-                </NoResults>
+                <ErrorText
+                    Icon={<BsXCircle />}
+                    message={
+                        "We could not get the user's informations, try again."
+                    }
+                />
             );
         }
     }
@@ -78,10 +78,10 @@ export const UserDetails = () => {
                     )}
                 </Grid>
             ) : (
-                <NoResults>
-                    <BsEmojiFrown />
-                    <p>This user does not have friends.</p>
-                </NoResults>
+                <ErrorText
+                    Icon={<BsEmojiFrown />}
+                    message={"This user does not have friends."}
+                />
             )}
         </Container>
     );

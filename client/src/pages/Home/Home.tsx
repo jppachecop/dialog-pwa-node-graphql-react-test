@@ -7,9 +7,10 @@ import { UserInterface } from "../../types/User";
 import { LoadingIndicator } from "../../components/LoadingIndicator/LoadingIndicator";
 import { Card } from "../../components/Card/Card";
 import { Grid } from "../../components/Grid/Grid";
+import { ErrorText } from "../../components/ErrorText/ErrorText";
 import { SearchContext } from "../../context/search/search";
 import { DEFAULT_PICTURE } from "../../constants/constants";
-import { NoResults, HomeContainer } from "./styles";
+import { HomeContainer } from "./styles";
 import { ROUTES } from "../../constants/routes";
 import { BsWifiOff, BsXCircle } from "react-icons/bs";
 
@@ -26,17 +27,17 @@ export const Home = () => {
     if (error) {
         if (error.networkError) {
             return (
-                <NoResults>
-                    <BsWifiOff />
-                    <p>Check your internet connection and try again.</p>
-                </NoResults>
+                <ErrorText
+                    Icon={<BsWifiOff />}
+                    message={"Check your internet connection and try again."}
+                />
             );
         } else {
             return (
-                <NoResults>
-                    <BsXCircle />
-                    <p>Your search could not be completed, try again.</p>
-                </NoResults>
+                <ErrorText
+                    Icon={<BsXCircle />}
+                    message={"Your search could not be completed, try again."}
+                />
             );
         }
     }
@@ -71,10 +72,7 @@ export const Home = () => {
                     )}
                 </Grid>
             ) : (
-                <NoResults>
-                    <BsXCircle />
-                    <p>No users found </p>
-                </NoResults>
+                <ErrorText Icon={<BsXCircle />} message={"No users found."} />
             )}
         </HomeContainer>
     );

@@ -106,5 +106,3 @@ curl -g \
 -d '{"query":"query{list(name: \"do\") { _id name age friends { name }}}"}' \
 http://localhost:4000/graphql
 ```
-
-...
